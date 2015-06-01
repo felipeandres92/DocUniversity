@@ -1,35 +1,38 @@
 {
-  "name": "OpenShift-Sample-App",
-  "version": "1.0.0",
-  "description": "OpenShift Sample Application",
-  "keywords": [
-    "OpenShift",
-    "Node.js",
-    "application",
-    "openshift"
-  ],
-  "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
+  "name": "unab-rest-and-mobile-example",
+  "version": "0.1.0",
+  "description": "UNAB first REST sample",
+  "author": "@mreyescano",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
   },
-  "homepage": "http://www.openshift.com/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/openshift/origin-server"
-  },
-
-  "engines": {
-    "node": ">= 0.6.0",
-    "npm": ">= 1.0.0"
-  },
-
   "dependencies": {
-    "express": "~3.4.4"
+    "engine-munger": "^0.2.0",
+    "express": "^4.3.0",
+    "kraken-devtools": "^1.0.0",
+    "kraken-js": "^1.0.1",
+    "localizr": "^0.1.0",
+    "mongoose": "^4.0.2",
+    "winston": "^1.0.0",
+    "winston-mongodb": "^1.1.1"
   },
-  "devDependencies": {},
-  "bundleDependencies": [],
-
-  "private": true,
-  "main": "server.js"
+  "devDependencies": {
+    "grunt": "^0.4.1",
+    "grunt-config-dir": "^0.3.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-copy-to": "0.0.10",
+    "grunt-localizr": "^0.1.0",
+    "grunt-mocha-cli": "^1.5.0",
+    "mocha": "^1.18.0",
+    "supertest": "^0.9.0"
+  },
+  "generator-kraken": {
+    "version": "1.1.2",
+    "template": false,
+    "css": false,
+    "js": false,
+    "task": "grunt"
+  }
 }
