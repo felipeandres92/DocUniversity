@@ -1,6 +1,6 @@
 {
   "databaseConfig": {
-    "mongoDbUrl" : "mongodb://localhost:27017/",
+    "mongoDbUrl" : "mongodb://admin:jBt37aNyjNCv@localhost:27017/",
     "dbName": "unabexample"
   },
 
@@ -9,7 +9,7 @@
       "level" : "debug",
       "colorize": true,
       "safe"  : "false",
-      "dbUri" : "mongodb://localhost:27017/unabexample"
+      "dbUri" : "mongodb://admin:jBt37aNyjNCv@localhost:27017/unabexample"
   },
 
   "middleware": {
