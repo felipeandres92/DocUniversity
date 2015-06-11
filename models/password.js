@@ -1,3 +1,5 @@
+'use strict'
+
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcrypt'),
@@ -38,4 +40,4 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb) {
     });
 };
  
-module.exports = mongoose.model(User, UserSchema);
+module.exports = mongoose.model('Password', UserSchema);
