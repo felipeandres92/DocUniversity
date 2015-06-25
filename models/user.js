@@ -1,32 +1,19 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    bcrypt = require('bcrypt'),
-    SALT_WORK_FACTOR = 10;
+    bcrypt = require('bcrypt');
 
 var UserSchema = new Schema({
     username: { type: String, required: true, index: { unique: true } },
     password: { type: String, required: true }
 });
 
-UserSchema.pre('save', function(next) {
-    var user = this;
+userSchema.methods.generateHash = function(password){
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(9));
+}
 
-    // only hash the password if it has been modified (or is new)
-    if (!user.isModified('password')) return next();
+userSchema.methods.validPassword = function(password){
+    return bcrypt.compareSync(password, this.local.password);
+}
 
-    // generate a salt
-    bcrypt.genSalt(SALT_WORK_FACTOR, function(error, salt) {
-        if (error) return next(error);
-
-        // hash the password using our new salt
-        bcrypt.hash(user.password, salt, function(error, hash) {
-            if (error) return next(error);
-
-            // override the cleartext password with the hashed one
-            user.password = hash;
-            next();
-        });
-    });
-});
+module.exports = mongoose.model('User', userSchema);
