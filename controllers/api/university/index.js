@@ -1,13 +1,12 @@
-//Controler
 'use strict';
 
-var usersLib = require('../../../lib/usersLib');
+var universitysLib = require('../../../lib/universitysLib');
 
 module.exports = function (router) {
 
   router.get('/', function (req, res) {
 
-    usersLib.getAll(function(error, results){
+    universitysLib.getAll(function(error, results){
 
       res.setHeader('Access-Control-Allow-Origin','*');
 
@@ -25,7 +24,7 @@ module.exports = function (router) {
 
     var id = req.params.id;
 
-    usersLib.getById(id, function(error, user){
+    universitysLib.getById(id, function(error, university){
 
       if (error){
         if (error.message === 'NOT_FOUND'){
@@ -34,16 +33,16 @@ module.exports = function (router) {
         return res.status(500).json(error).end();
       }
 
-      res.status(200).json(user).end();
+      res.status(200).json(university).end();
 
     });
   });
 
   router.post('/', function (req, res) {
 
-    var newUser = req.body;
+    var newUniversity = req.body;
 
-    usersLib.create(newUser, function(error){
+    universitysLib.create(newUniversity, function(error){
 
       if (error){
         return res.status(500).json(error).end();
@@ -59,7 +58,7 @@ module.exports = function (router) {
     var id = req.params.id;
     var newData = req.body;
 
-    usersLib.update(id, newData, function(error, user){
+    universitysLib.update(id, newData, function(error, university){
 
       if (error){
         if (error.message === 'NOT_FOUND'){
@@ -68,7 +67,7 @@ module.exports = function (router) {
         return res.status(500).json(error).end();
       }
 
-      res.status(200).json(user).end();
+      res.status(200).json(university).end();
 
     });
   });
@@ -77,7 +76,7 @@ module.exports = function (router) {
 
     var id = req.params.id;
 
-    usersLib.delete(id, function(error, user){
+    universitysLib.delete(id, function(error, university){
 
       if (error){
         if (error.message === 'NOT_FOUND'){

@@ -1,11 +1,14 @@
 'use strict';
-
+//Felipe
 var http    = require('http');
 var express = require('express');
 var kraken = require('kraken-js');
 var mongoose = require('mongoose');
 var logger = require('./lib/logger');
 var options, app;
+//var Grid = require('gridfs-stream');
+
+//Grid.mongo = mongoose.mongo;
 
 options = {
     onconfig: function (config, next) {
@@ -24,6 +27,8 @@ options = {
 
       database.once('open', function callback() {
         logger.info('db connection open');
+  //      var gfs = Grid( database.db );
+  //      exports.gfs = gfs;
       });
 
       next(null, config);
