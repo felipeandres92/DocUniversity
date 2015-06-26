@@ -1,4 +1,5 @@
 'use strict'
+
 // Load required packages
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
@@ -28,7 +29,7 @@ UserSchema.pre('save', function(callback) {
     if (err) return callback(err);
 
     bcrypt.hash(user.password, salt, null, function(err, hash) {
-      if (err) return callback(err);
+      if (err){ return callback(err) };
       user.password = hash;
       callback();
     });
